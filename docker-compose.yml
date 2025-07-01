@@ -1,27 +1,40 @@
+version: "3.9"
+
 services:
   db:
     image: mysql:8
-    restart: always
+    container_name: movies-db          # ← sabit isim
+    restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: Kayseri_150103521
       MYSQL_DATABASE: movie_db
       MYSQL_USER: user
       MYSQL_PASSWORD: Kayseri_150103521
-    ports:
-      - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+    networks: [appnetwork]
+    # Host makinede 3306 boşsa aç; doluysa yoruma al
+    ports:
+      - "3306:3306"
 
   app:
-    build: .
+    build: .                           # projenin Dockerfile’ı
+    container_name: movie-service
     depends_on:
       - db
-    ports:
-      - "8081:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/movie_db
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/movie_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: user
       SPRING_DATASOURCE_PASSWORD: Kayseri_150103521
+      REC_API: http://movie_flask:5000
+
+    ports:
+      - "8080:8080"
+    networks: [appnetwork]
 
 volumes:
   mysql-data:
+
+networks:
+  appnetwork:
+    driver: bridge

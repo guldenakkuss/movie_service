@@ -52,4 +52,9 @@ public class Movie {
 
     // Bazı dizilerde bulunan ekstra alan
     private String totalSeasons;
+
+    // ⭐ BURASI: eksik olduğu için hataya neden olan getter
+    @Column(length = 200)
+     public String genres;
+
 }

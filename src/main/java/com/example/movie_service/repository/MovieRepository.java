@@ -2,6 +2,8 @@ package com.example.movie_service.repository;
 
 import com.example.movie_service.model.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
@@ -38,4 +40,11 @@ public interface MovieRepository extends JpaRepository<Movie,Long> {
     // 10. Birden fazla tür (ör: movie veya series)
     List<Movie> findByTypeIn(List<String> types);
  List<Movie>findByTitleContainingIgnoreCaseAndWriterContainingIgnoreCase(String title,String writer);
+
+ @Query("SELECT m FROM Movie m WHERE m.genre = :genre AND ABS(m.imdbRating - :imdbRating) <= 1 AND m.id <> :movieId")
+ List<Movie> findSimilarMovies(@Param("genre") String genre,
+                               @Param("imdbRating") double imdbRating,
+                               @Param("movieId") Long movieId);
+
+
 }

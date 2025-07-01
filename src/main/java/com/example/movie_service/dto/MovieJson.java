@@ -1,10 +1,13 @@
 package com.example.movie_service.dto;
 
+import com.example.movie_service.model.Movie;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 public class MovieJson {
+    @Setter
     @JsonProperty("Title")
     private String title;
     @JsonProperty("Year")
@@ -47,5 +50,19 @@ public class MovieJson {
     private String totalSeasons;
     @JsonProperty("ComingSoon")
     private Boolean ComingSoon;
+
+    // Getter ve setter'ları ekle
+    @Setter
+    private Long id;
+    @Setter
+    private String genres;
+
+    public MovieJson() {} // Boş constructor (gerekliyse Jackson için)
+
+    public MovieJson(Movie movie) {
+        this.id = movie.getId();
+        this.title = movie.getTitle();
+        this.genres = movie.getGenres();
+    }
 
 }
