@@ -53,7 +53,7 @@ public class DataLoader {
                 .rated(j.getRated())
                 .released(j.getReleased())
                 .runtime(j.getRuntime())
-                .genre(j.getGenre())
+                .genres(j.getGenre())
                 .director(j.getDirector())
                 .writer(j.getWriter())
                 .actors(j.getActors())
@@ -63,11 +63,13 @@ public class DataLoader {
                 .awards(j.getAwards())
                 .poster(j.getPoster())
                 .metascore(j.getMetascore())
-                .imdbRating(parseDouble(j.getImdbRating()))
                 .imdbVotes(j.getImdbVotes())
                 .imdbID(j.getImdbID())
                 .type(j.getType())
+                .totalSeasons(j.getTotalSeasons()
+                ).imdbRating(j.getImdbRating())
                 .totalSeasons(j.getTotalSeasons())
+                .ComingSoon(j.getComingSoon())
                 .build();
     }
 
@@ -80,4 +82,5 @@ public class DataLoader {
             return 0.0;
         }
     }
+
 }

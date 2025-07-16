@@ -23,7 +23,7 @@ public class Movie {
     private String rated;
     private String released;
     private String runtime;
-    private String genre;
+
 
     private Boolean ComingSoon;
 
@@ -41,9 +41,9 @@ public class Movie {
     private String poster;
     private String metascore;
 
-    @Min(0) @Max(10)
-    private double imdbRating;
-
+    @Min(0)
+    @Max(10)
+    private Double imdbRating;
     private String imdbVotes;
     private String imdbID;
 
@@ -55,6 +55,8 @@ public class Movie {
 
     // ⭐ BURASI: eksik olduğu için hataya neden olan getter
     @Column(length = 200)
-     public String genres;
+    public String genres;
 
-}
+
+    }
+

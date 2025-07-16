@@ -39,7 +39,7 @@ public class MovieJson {
     @JsonProperty("Metascore")
     private String metascore;
     @JsonProperty("imdbRating")
-    private String imdbRating;
+    private Double imdbRating;
     @JsonProperty("imdbVotes")
     private String imdbVotes;
     @JsonProperty("imdbID")
@@ -50,6 +50,7 @@ public class MovieJson {
     private String totalSeasons;
     @JsonProperty("ComingSoon")
     private Boolean ComingSoon;
+
 
     // Getter ve setter'ları ekle
     @Setter
@@ -63,6 +64,30 @@ public class MovieJson {
         this.id = movie.getId();
         this.title = movie.getTitle();
         this.genres = movie.getGenres();
+        this.actors=movie.getActors();
+        this.director=movie.getDirector();
+        this.writer=movie.getWriter();
+        this.language=movie.getLanguage();
+        this.country=movie.getCountry();
+        this.awards=movie.getAwards();
+        this.plot=movie.getPlot();
+        this.runtime=movie.getRuntime();
+        this.imdbID=movie.getImdbID();
+        this.type=movie.getType();
+        this.totalSeasons=movie.getTotalSeasons();
+        this.ComingSoon=movie.getComingSoon();
+        this.year=movie.getYear();
+        this.rated=movie.getRated();
+        this.metascore=movie.getMetascore();
+        this.imdbVotes=movie.getImdbVotes();
+        this.totalSeasons=movie.getTotalSeasons();
+        this.poster=movie.getPoster();
+        this.language=movie.getLanguage();
+        this.actors=movie.getActors();
+        this.released=movie.getReleased();
+        this.imdbRating=movie.getImdbRating();
+
+
     }
 
 }
